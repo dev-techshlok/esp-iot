@@ -11,8 +11,8 @@ uint8_t temprature_sens_read();
 #endif
 
 uint8_t temprature_sens_read();
-const char* ssid = "B53_HWifi";   // your network SSID (name)
-const char* password = "B53_1996123";   // your network password
+const char* ssid = "";   // your network SSID (name)
+const char* password = "";   // your network password
 
 WiFiClient  client;
 
