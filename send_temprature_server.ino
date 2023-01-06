@@ -16,8 +16,8 @@ const char* password = "";   // your network password
 
 WiFiClient  client;
 
-unsigned long myChannelNumber = 2001752;
-const char * myWriteAPIKey = "3W23OIDUMD20MA79";
+unsigned long myChannelNumber = ;
+const char * myWriteAPIKey = "";
 
 // Timer variables
 unsigned long lastTime = 0;
