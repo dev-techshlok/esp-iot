@@ -6,8 +6,8 @@
 // Replace the next variables with your SSID/Password combination
 const char* ssid = "WIFI_NAME";
 const char* password = "WIFI_PASSWORD";
-char * sub_topic = "j17qwerty123456A"; //This is YOU (Your team)
-char * pub_topic = "j17qwerty123456B"; //This is THEM (Another team)
+char * sub_topic = "teamA"; //This is YOU (Your team)
+char * pub_topic = "teamB"; //This is THEM (Another team)
 
 
 
@@ -74,12 +74,12 @@ void callback(char* topic, byte* message, unsigned int length) {
   if (messageTemp == "on") {
     Serial.println("on");
     digitalWrite(ledPin, HIGH);
-    client.publish(pub_topic, "LED is ON");
+//    client.publish(pub_topic, "LED is ON");
   }
   else if (messageTemp == "off") {
     Serial.println("off");
     digitalWrite(ledPin, LOW);
-    client.publish(pub_topic, "LED is OFF");
+//    client.publish(pub_topic, "LED is OFF");
   }
   else {
     Serial.println(messageTemp);
