@@ -1,13 +1,12 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
-#include <Wire.h>
 
 
 // Replace the next variables with your SSID/Password combination
 const char* ssid = "Demo";
 const char* password = "123123123";
-char * sub_topic = "j17qwerty123456A"; //This is YOU (Your team)
-char * pub_topic = "j17qwerty123456B"; //This is THEM (Another team)
+char * sub_topic = "TEAM_0"; //This is YOU (Your team)
+char * pub_topic = "202f76_SUB"; //This is THEM (Another team)
 
 
 
@@ -57,8 +56,15 @@ void setup_wifi() {
 }
 
 void callback(char* topic, byte* message, unsigned int length) {
-  Serial.print("Message arrived: ");
+  Serial.print("Message arrived from: ");
   String messageTemp;
+
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)topic[i]);
+//    messageTemp += (char)topic[i];
+  }
+  Serial.println();
+  
 
   for (int i = 0; i < length; i++) {
     Serial.print((char)message[i]);
@@ -119,11 +125,11 @@ void loop() {
   client.loop();
   if (Serial.available()) {
     String recvString = Serial.readString();
-    if (recvString.indexOf("on") >= 0) {
-      client.publish(pub_topic, "on");
+    if (recvString.indexOf("ON") >= 0) {
+      client.publish(pub_topic, "ON");
     }
-    else if (recvString.indexOf("off") >= 0) {
-      client.publish(pub_topic, "off");
+    else if (recvString.indexOf("OFF") >= 0) {
+      client.publish(pub_topic, "OFF");
     }
     else {
       char buf[recvString.length() + 2];
